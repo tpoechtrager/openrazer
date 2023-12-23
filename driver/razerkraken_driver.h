@@ -1,12 +1,6 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
 /*
  * Copyright (c) 2015 Terry Cain <terrys-home.co.uk>
- */
-
-/*
- * This program is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or (at your option)
- * any later version.
  */
 
 #ifndef __HID_RAZER_KRAKEN_H
@@ -149,7 +143,6 @@ union razer_kraken_effect_byte {
 #define KYLIE_BREATHING2_ADDRESS_START 0x1745
 #define KYLIE_BREATHING3_ADDRESS_START 0x174D
 
-
 struct razer_kraken_request_report {
     unsigned char report_id;
     unsigned char destination;
@@ -163,11 +156,5 @@ struct razer_kraken_response_report {
     unsigned char report_id;
     unsigned char arguments[36];
 };
-
-
-
-
-
-
 
 #endif

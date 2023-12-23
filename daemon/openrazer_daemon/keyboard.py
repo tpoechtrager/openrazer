@@ -1,10 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 """
 Module to handle custom colours
 """
 
-import gi
-gi.require_version('Gdk', '3.0')
-from gi.repository import Gdk
 import struct
 import subprocess
 
@@ -135,7 +134,9 @@ EVENT_MAPPING = {
     111: 'DELETE', 113: 'MUTE', 114: 'VOL_DOWN', 115: 'VOL_UP', 119: 'PAUSE',
     125: 'SUPER', 127: 'CTXMENU',
     163: 'MEDIA_FORWARD', 164: 'MEDIA_PLAY', 165: 'MEDIA_BACK',
-    183: 'M1', 184: 'M2', 185: 'M3', 186: 'M4', 187: 'M5', 188: 'MACROMODE', 189: 'GAMEMODE', 190: 'BRIGHTNESSDOWN', 194: 'BRIGHTNESSUP'
+    183: 'M1', 184: 'M2', 185: 'M3', 186: 'M4', 187: 'M5', 188: 'M6',
+    189: 'M7', 190: 'M8', 191: 'M9', 192: 'M10', 193: 'M11', 194: 'M12',
+    0x2ad: 'MACROMODE', 0x2ac: 'GAMEMODE', 0x2ab: 'BRIGHTNESSDOWN', 0x2aa: 'BRIGHTNESSUP'
 }
 
 TARTARUS_EVENT_MAPPING = {
@@ -404,28 +405,6 @@ class KeyboardColour(object):
     Keyboard class which represents the colour state of the keyboard.
     """
 
-    @staticmethod
-    def gdk_colour_to_rgb(gdk_color):
-        """
-        Converts GDK colour to (R,G,B) tuple
-
-        :param gdk_color: GDK colour
-        :type gdk_color: Gdk.Color or tuple
-
-        :return: Tuple of 3 ints
-        :rtype: tuple
-        """
-        if isinstance(gdk_color, (list, tuple)):
-            return gdk_color
-
-        assert type(gdk_color) is Gdk.Color, "Is not of type Gdk.Color"
-
-        red = int(gdk_color.red_float * 255)
-        green = int(gdk_color.green_float * 255)
-        blue = int(gdk_color.blue_float * 255)
-
-        return red, green, blue
-
     def __init__(self, rows, columns):
         self.rows = rows
         self.columns = columns
@@ -486,11 +465,11 @@ class KeyboardColour(object):
         :type col: int
 
         :param colour: Colour to set
-        :type colour: Gdk.Color or tuple
+        :type colour: tuple
 
         :raises KeyDoesNotExistError: If given key does not exist
         """
-        self.colors[row][col].set(KeyboardColour.gdk_colour_to_rgb(colour))
+        self.colors[row][col].set(colour)
 
     def get_key_colour(self, key):
         """

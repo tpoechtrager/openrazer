@@ -1,5 +1,5 @@
 ---
-name: ⌨️🖱️New Device Support
+name: ⌨️🖱️ New Device Support
 about: Provide information to add support for a new device
 title: Support for [device name here]
 labels: Device Support
@@ -24,10 +24,19 @@ Please post the output of
     ls -lah /dev/input/by-id/
 ```
 
+<details>
+
+```
+Please post the output of
+    usbhid-dump -m 1532 -ed
+```
+
+</details>
+
 ### Packet Captures
 
 <Please see here as we probably need packet captures>
 <https://github.com/openrazer/openrazer/wiki/Reverse-Engineering-USB-Protocol>
 
 ### Synapse Screenshots
-<Screenshots of all available options as seen on Razer Synapse>
+<Screenshots of all available options as seen on **Razer Synapse** in a Windows Environment>
