@@ -10,6 +10,7 @@
 #include <linux/usb/input.h>
 #include <linux/hid.h>
 #include <linux/dmi.h>
+#include <linux/bitmap.h>
 //#include <linux/input-event-codes.h>
 
 #include "usb_hid_keys.h"
